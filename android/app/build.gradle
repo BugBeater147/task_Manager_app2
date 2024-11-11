@@ -1,0 +1,39 @@
+plugins {
+    id "com.android.application"
+    id 'com.google.gms.google-services' // Required for Firebase
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.task_manager_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.example.taskManagerApp" // Ensure this matches Firebase exactly
+        minSdkVersion 23 // Set minSdkVersion to 23 to meet firebase_auth requirements
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Use debug signing config for now
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
